@@ -1,0 +1,22 @@
+
+///////////////////////////////////////////////////////////////////////////////
+class Light
+///////////////////////////////////////////////////////////////////////////////
+{
+public:
+	struct 
+	{
+		float	x;
+		float	y;
+		float	z;
+	} loc ;
+
+	struct 
+	{
+		float	r;
+		float	g;
+		float	b;
+	} col ;
+
+	Light( float x, float y, float z, float r, float g, float b);
+};

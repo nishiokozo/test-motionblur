@@ -1,3 +1,4 @@
+// ビヘイビアマップを使ったモーションブラー用シェーダー
 float4x4 matModel ;
 float4x4 matView ;
 float4x4 matProj ;
@@ -14,7 +15,7 @@ sampler image0 = sampler_state
 	MinFilter = POINT;
 	MagFilter = POINT;
 
-	    AddressU = Clamp;
+    AddressU = Clamp;
     AddressV = Clamp;
 
 };
@@ -23,7 +24,7 @@ struct VS_INPUT
 {
 	float4 pos	: POSITION;
 	float3 nml	: NORMAL0;
-	float2 uv		: TEXCOORD0;
+	float2 uv	: TEXCOORD0;
 	float3 col	: COLOR0;
 };
 
@@ -36,7 +37,7 @@ struct VS_OUTPUT
 
 struct PS_INPUT
 {
-	float2 uv	  : TEXCOORD0;
+	float2 uv	: TEXCOORD0;
 	float2 vel	: NORMAL3;
 };
 
@@ -67,14 +68,11 @@ VS_OUTPUT vs( VS_INPUT v )
 //d =1;
 	ret.pos = ( d > 0 )?p1:p0;
 
-
 	p0.xy /= p0.w;
 	p1.xy /= p1.w;
 
 	ret.vel = (p1.xy - p0.xy );
 
-
-	
 	ret.vel.y = -ret.vel.y;
 
 	ret.uv = ret.pos.xy;
